@@ -1,0 +1,23 @@
+Name of Project: My Day To:day
+
+3 MVP features:
+
+User can input tasks they wish to complete in a daily to do list
+
+User can add that list to a calendar
+
+User can input journal entries as summaries of the day
+
+Coding portion:
+- Build HTML that has 3 main div containers 
+- In first main div, allow users to add tasks/items to a to do list that they can add/delete/check off when needed
+- in second main div, include calendar that allows users to add that list of items
+- in third main div, allow users to input text as an overview or summary
+
+
+figma desgin link:
+https://www.figma.com/file/EB9OYI9Z4Ofc6JkIsYJ0Zs/My-Day-Today?node-id=0%3A1
+
+
+
+
