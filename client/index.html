@@ -34,10 +34,10 @@
           <a class="nav-link active" href="#top">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">My Week's Overview</a>
+          <a class="nav-link" href="#">Week to Week</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Journal Entries</a>
+          <a class="nav-link" href="#entries">Journal Entries</a>
         </li>
       </ul>
     </header>
@@ -45,14 +45,32 @@
       <div class="to-do-container">
           <h1>Task List</h1>
           <form id="new-item-form">
-          <input id="item-input" 
-                 placeholder="What do you need to do today?" 
-                 type="text"
-          />
-          <button type="submit">+</button>
+            <input 
+              id="item-input" 
+              placeholder="Input some Tasks!" 
+              type="text"/>
+            <button type="submit">Add To List!</button>
           <div id="list"></div>
-        </form>
+          </form>
+
+          
+          <form name="list-submission">
+            <label></label>
+            <select name="days">
+              <option value="">Choose A Day</option>
+              <option value="Monday">Monday</option>
+              <option value="Tuesday">Tuesday</option>
+              <option value="Wednesday">Wednesday</option>
+              <option value="Thursday">Thursday</option>
+              <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
+            </select>
+            <input type="submit" value="Submit" name="submit">
+          </form>
+
       </div>
+
 
       <div class="weekly-view-container">
         <h1>Weekly Overview</h1>
@@ -65,7 +83,7 @@
             </h2>
         
         <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-mon"></div>
         </div>
           </div>
           <div class="accordion-item">
@@ -75,7 +93,7 @@
               </button>
             </h2>
             <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-tue"></div>
             </div>
           </div>
           <div class="accordion-item">
@@ -86,7 +104,7 @@
             </h2>
           </div>
             <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-wed"></div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingFour">
@@ -96,7 +114,7 @@
               </h2>
             </div>
             <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-thu"></div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingFive">
@@ -106,7 +124,7 @@
               </h2>
             </div>
             <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-fri"></div>
             </div>
               <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingSix">
@@ -116,7 +134,7 @@
               </h2>
               </div>
             <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-sat"></div>
             </div>
             <div class="accordion-item">
               <h2 class="accordion-header" id="flush-headingSeven">
@@ -126,7 +144,7 @@
               </h2>
             </div>
             <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body">Temp</div>
+              <div class="accordion-body-sun"></div>
             </div>
           </div>
         </div>
@@ -136,7 +154,15 @@
 
     <div class="journal-container">
       <h1>Journal Entry:</h1>
+      <form class="journal-entry">
+        <input 
+          type="text"
+          />
+      </form>
     </div>
+
+    <section id="entries-container"></section>
+    <a name="entries"></a>
 
     <script src="main.js"></script>
     <script
@@ -144,5 +170,6 @@
       integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
   </body>
 </html>

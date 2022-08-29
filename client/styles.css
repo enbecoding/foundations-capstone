@@ -28,17 +28,20 @@ html {
     height: 50%;
     box-shadow: 0 0.5rem 3 rem rgba(0, 0, 0, 0.4);
     padding: 20px;
-    justify-content: center;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    flex-direction: column;
 }
 
 .weekly-view-container {
     width: 50%;
     box-shadow: 0 0.5rem 3 rem rgba(0, 0, 0, 0.4);
+    padding: 20px;
 }
 
 .to-do-input {
-    width: 180px;
+    width: 250px;
 }
 
 .add-items-button {
@@ -46,3 +49,13 @@ html {
     height: 22px;
 }
 
+.journal-container {
+    width: 100vw;
+    height: 35vh;
+    padding: 20px;
+}
+
+.checked {
+    color: gray;
+    text-decoration: line-through;
+}
