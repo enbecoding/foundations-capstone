@@ -1,16 +1,18 @@
 const TASKS = require("../config/daily_tasks.json");
-let globalId = 
+const ENTRYDB = require("../config/entries.json");
+let globalId = 4;
+
 module.exports = {
   getTasks: (request, response) => {
     response.status(200).send(TASKS.tasks);
   },
   createTask: (request, response) => {
-    console.log(request)
+    // console.log(request)
     let { task } = request.body
     TASKS.tasks.push(task)
     console.log(TASKS)
+    baseId++
     response.status(200).send(TASKS.tasks)
-    globalId++
   },
 //   updateTask: (req, res) => {
 //     let { id } = req.params;
@@ -23,31 +25,31 @@ module.exports = {
 //     TASKS.splice(index, 1)
 //     res.status(200).send(TASKS.tasks)
 //   },
-    // getAllEntries: (req, res) => {
-    //     console.log("got the info");
-    //     res.status(200).send(TASKS.journalEntries)
-    // },
-    // createEntry: (req,res) => {
-    //     let { content } = req.body
-    //     let newEntry = {
-    //         id: globalId,
-    //         content
-    //     }
-    //     TASKS.journalEntries.push(newEntry)
-    //     res.status(200).send(TASKS.journalEntries)
-    //     globalID++
-    // },
+    getAllEntries: (req, res) => {
+        res.status(200).send(ENTRYDB)
+    },
+    createEntry: (req,res) => {
+        let { content } = req.body
+        console.log(content)
+        let newEntry = {
+            id: globalId,
+            content
+        }
+        ENTRYDB.push(newEntry)
+        res.status(200).send(ENTRYDB)
+        globalID++
+    },
     // updateEntry: (req, res) => {
     //     let {id} = req.params;
-    //     let {type} = req.body;
-    //     let index = TASKS.journalEntries.findIndex(element => +element.id === +id)
+    //     let {content} = req.body;
+    //     let index = ENTRYDB.findIndex(element => +element.id === +id)
 
-    //     if (TASKS.journalEntries[index])
-    // }
-    // deleteEntry: (req, res) => {
-    //     let index = TASKS.journalEntries.findIndex(element => element.id === +req.params.id)
-    //     TASKS.journalEntries.splice(index, 1)
-    //     res.status(200).send(TASKS.journalEntries)
-    // }
+    //     if (ENTRYDB[index])
+    // },
+    deleteEntry: (req, res) => {
+        let index = ENTRYDB.findIndex(element => element.id === +req.params.id)
+        ENTRYDB.splice(index, 1)
+        res.status(200).send(ENTRYDB)
+    }
 }
 

@@ -21,7 +21,6 @@ const sundayItems = document.querySelector(".accordion-body-sun");
 
 const URL = `http://localhost:4000`;
 
-//AXIOS GET REQUEST
 const toDoCallback = ({ data: tasks }) => {
   displayTasks(tasks);
 };
@@ -68,26 +67,17 @@ const getToDoList = () => {
   axios.get(`${URL}/api/task`).then(toDoCallback).catch(errCallback);
 };
 
-//
-// const onAddTaskButtonClick = () => {
-//   addbtn.addEventListener("click", () => {
-//     // e.preventDefault();
-//     taskSubmitHandler();
-//   });
-// };
-
-
 //AXIOS POST CODE
 const taskSubmitHandler = (e) => {
-    e.preventDefault(e);
-    
-    let taskItem = {
-        task: input.value,
-    };
-    console.log(taskItem)
-      createToDo(taskItem);
-    
-    input.value = "";
+  e.preventDefault(e);
+
+  let taskItem = {
+    task: input.value,
+  };
+  console.log(taskItem);
+  createToDo(taskItem);
+
+  input.value = "";
 };
 
 formToDo.addEventListener("submit", taskSubmitHandler);
@@ -120,14 +110,15 @@ getToDoList();
 //CODE FOR JOURNAL POSTS
 const entriesContainer = document.querySelector("#entries-container");
 const journalForm = document.querySelector("journal-posts");
+const postBtn = document.querySelector(".entry-post")
 
 const entriesCallback = ({ data: entries }) => displayEntries(entries);
 
-// const getAllEntries = () => axios.get(`${URL}/entries`).then(entriesCallback).catch(errCallback)
+const getAllEntries = () => axios.get(`${URL}/api/entries`).then(entriesCallback).catch(errCallback)
 const createEntry = (body) =>
-  axios.post(`${URL}/entries`, body).then(entriesCallback).catch(errCallback);
+  axios.post(`${URL}/api/entries`, body).then(entriesCallback).catch(errCallback);
 const deleteEntry = (id) =>
-  axios.delete(`${URL}/${id}`).then(entriesCallback).catch(errCallback);
+  axios.delete(`${URL}/api/entries/${id}`).then(entriesCallback).catch(errCallback);
 
 function entrySubmitHandler(e) {
   e.preventDefault();
@@ -145,8 +136,8 @@ function createEntryCard(entry) {
   const entryCard = document.createElement("div");
   entryCard.classList.add("entry-card");
 
-  entryCard.innerHTML = `<p class="content">${entry.content}</p>
-    <button onclick="deleteEntry(${entry.id})">Delete Post</button>`;
+  entryCard.innerHTML = `<div class="content">${entry.content}</div>
+    <button class="delete-btn" onclick="deleteEntry(${entry.id})">Delete Post</button>`;
 
   entriesContainer.appendChild(entryCard);
 }
@@ -158,6 +149,6 @@ function displayEntries(arr) {
   }
 }
 
-// journalForm.addEventListener("submit", submitHandler)
+postBtn.addEventListener("click", entrySubmitHandler)
 
-// getAllEntries()
+getAllEntries()

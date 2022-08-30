@@ -16,13 +16,13 @@ app.post(`/api/task`, createTask);
 
 //app.delete(`/api/tasks/:id, deleteTask);
 
-// app.get(`/api/entries`, getAllEntries);
+app.get(`/api/entries`, getAllEntries);
 
-// app.post(`api/entries`, createEntry);
+app.post(`/api/entries`, createEntry);
 
 // app.put(`/api/entries/:id`, updateEntry);
 
-// app.delete(`/api/entry/:id`, deleteEntry)
+app.delete(`/api/entry/:id`, deleteEntry);
 
 
 const PORT = 4000;
