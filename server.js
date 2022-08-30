@@ -6,23 +6,23 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static("client"));
 
-const { getTasks, createToDo, getAllEntries, createEntry, updateEntry, deleteEntry } = require(`./server/controller/controller.js`);
+const { getTasks, createTask, getAllEntries, createEntry, updateEntry, deleteEntry } = require(`./server/controller/controller.js`);
 
 app.get(`/api/tasks`, getTasks);
 
-// app.post(`/api/toDos`, createTask);
+app.post(`/api/toDos`, createTask);
 
 //app.put(/api/tasks/:id, updateTask);
 
 //app.delete(`/api/tasks/:id, deleteTask);
 
-app.get(`/api/entries`, getAllEntries);
+// app.get(`/api/entries`, getAllEntries);
 
-app.post(`api/entries`, createEntry);
+// app.post(`api/entries`, createEntry);
 
 // app.put(`/api/entries/:id`, updateEntry);
 
-app.delete(`/api/entry/:id`, deleteEntry)
+// app.delete(`/api/entry/:id`, deleteEntry)
 
 
 const PORT = 4000;

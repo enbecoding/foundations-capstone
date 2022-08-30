@@ -49,7 +49,9 @@
         <form id="new-item-form">
           <input id="item-input" placeholder="Input some Tasks!" type="text" />
           <button class="submit-task" type="create-task">Add To List!</button>
-          <div id="list"></div>
+          <ul id="list">
+
+          </ul>
         </form>
 
         <form name="list-submission">
@@ -235,7 +237,7 @@
      <form class="journal-posts">
       <label class="textLabel">Description:</label><br>
       <div class="textarea_style">
-        <textarea class="textarea" id="textarea" onkeyup="charCount();" name="textarea_description" cols="37" rows="4" maxlength="400" placeholder="What's on your mind?"></textarea>
+        <textarea class="textarea" id="textarea" name="textarea_description" cols="37" rows="4" maxlength="400" placeholder="What's on your mind?"></textarea>
       </div><br>
       <button class="entry-post">POST</button>
      </form>

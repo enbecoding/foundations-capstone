@@ -1,5 +1,5 @@
 {
-  "tasks": [],
+  "tasks": ["7:30 - 9:00 AM Study Session" ],
   "weekly": {
     "monday": [],
     "tuesday": [],
@@ -9,5 +9,5 @@
     "saturday": [],
     "sunday": []
   },
-  "journalEntries": []
+  "journalEntries": ["I can't believe I woke up so early that I studied at 7:30 AM...."]
 }

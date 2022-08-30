@@ -10,6 +10,7 @@ const weeklyForm = document.forms["list-submission"];
 let menu = weeklyForm.days;
 let options = weeklyForm.days.options;
 
+//weekly view list
 const mondayItems = document.querySelector(".accordion-body-mon");
 const tuesdayItems = document.querySelector(".accordion-body-tue");
 const wednesdayItems = document.querySelector(".accordion-body-wed");
@@ -17,11 +18,13 @@ const thursdayItems = document.querySelector(".accordion-body-thu");
 const fridayItems = document.querySelector(".accordion-body-fri");
 const saturdayItems = document.querySelector(".accordion-body-sat");
 const sundayItems = document.querySelector(".accordion-body-sun");
-// menu.required = true;
 
 const URL = `http://localhost:4000`;
 
-const toDoCallback = ({ data: tasks }) => getToDoList(tasks);
+//Function to
+const toDoCallback = ({ data: tasks }) => {
+  displayTasks(tasks);
+};
 const errCallback = (err) => console.log(err);
 
 const createToDo = (body) =>
@@ -49,26 +52,26 @@ const removeTask = (element) => {
     element.remove();
   });
 };
+
 //creating the todoList function
-const addToDoItem = (task) => {
-  const value = input.value;
+const displayTasks = (tasks) => {
   const item = document.createElement("li");
-  item.textContent = value;
+  tasks.map((task) => {
+    item.innerHTML = `<li onClick="${checkOffTask(item)}">${task}</li>
+        <button ondblClick="${removeTask(item)}" class=">x</button>`;
+  });
   list.append(item);
-  input.value = "";
-  checkOffTask(item);
-  removeTask(item);
 };
 
 const getToDoList = () => {
   axios.get(`${URL}/api/tasks`).then(toDoCallback).catch(errCallback);
-//   addToDoItem();
 };
 
 const onAddTaskButtonClick = () => {
   addbtn.addEventListener("click", () => {
-    e.preventDefault();
-    addToDoItem();
+    // e.preventDefault();
+    console.log("I got clicked");
+    displayTasks();
   });
 };
 
@@ -83,50 +86,64 @@ weeklyForm.onsubmit = function (e) {
   console.log(optionValue);
   if (optionValue === "Monday") {
     mondayItems.append(list);
+  } else if (optionValue === "Tuesday") {
+    tuesdayItems.append(list);
+  } else if (optionValue === "Wednesday") {
+    wednesdayItems.append(list);
+  } else if (optionValue === "Thursday") {
+    thursdayItems.append(list);
+  } else if (optionValue === "Friday") {
+    fridayItems.append(list);
+  } else if (optionValue === "Saturday") {
+    saturdayItems.append(list);
+  } else if (optionValue === "Sunday") {
+    sundayItems.append(list);
   }
 };
 
 getToDoList();
 
 //CODE FOR JOURNAL POSTS
-const entriesContainer = document.querySelector("#entries-container")
-const journalForm = document.querySelector("journal-posts")
+const entriesContainer = document.querySelector("#entries-container");
+const journalForm = document.querySelector("journal-posts");
 
-const entriesCallback = ({ data: entries }) => displayEntries(entries)
+const entriesCallback = ({ data: entries }) => displayEntries(entries);
 
-const getAllEntries = () => axios.get(`${URL}/entries`).then(entriesCallback).catch(errCallback)
-const createEntry = body => axios.post(`${URL}/entries`, body).then(entriesCallback).catch(errCallback)
-const deleteEntry = id => axios.delete(`${URL}/${id}`).then(entriesCallback).catch(errCallback)
+// const getAllEntries = () => axios.get(`${URL}/entries`).then(entriesCallback).catch(errCallback)
+const createEntry = (body) =>
+  axios.post(`${URL}/entries`, body).then(entriesCallback).catch(errCallback);
+const deleteEntry = (id) =>
+  axios.delete(`${URL}/${id}`).then(entriesCallback).catch(errCallback);
 
 function submitHandler(e) {
-    e.preventDefault()
+  e.preventDefault();
 
-    let content = document.querySelector(".textarea")
-    let contentObj = {
-        content: content.value
-    }
-    createEntry(contentObj)
+  let content = document.querySelector(".textarea");
+  let contentObj = {
+    content: content.value,
+  };
+  createEntry(contentObj);
 
-    content.value=''
+  content.value = "";
 }
 
 function createEntryCard(entry) {
-    const entryCard = document.createElement('div')
-    entryCard.classList.add('entry-card')
+  const entryCard = document.createElement("div");
+  entryCard.classList.add("entry-card");
 
-    entryCard.innerHTML = `<p class="content">${entry.content}</p>
-    <button onclick="deleteEntry(${entry.id})">Delete Post</button>`
+  entryCard.innerHTML = `<p class="content">${entry.content}</p>
+    <button onclick="deleteEntry(${entry.id})">Delete Post</button>`;
 
-    entriesContainer.appendChild(entryCard)
+  entriesContainer.appendChild(entryCard);
 }
 
 function displayEntries(arr) {
-    entriesContainer.innerHTML = ``
-    for (let i = 0; i < arr.length; i++) {
-        createEntryCard(arr[i])
-    }
+  entriesContainer.innerHTML = ``;
+  for (let i = 0; i < arr.length; i++) {
+    createEntryCard(arr[i]);
+  }
 }
 
-journalForm.addEventListener("submit", submitHandler)
+// journalForm.addEventListener("submit", submitHandler)
 
-getAllEntries()
+// getAllEntries()
