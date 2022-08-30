@@ -21,14 +21,14 @@ const sundayItems = document.querySelector(".accordion-body-sun");
 
 const URL = `http://localhost:4000`;
 
-//Function to
+//AXIOS GET REQUEST
 const toDoCallback = ({ data: tasks }) => {
   displayTasks(tasks);
 };
 const errCallback = (err) => console.log(err);
 
 const createToDo = (body) =>
-  axios.post(URL, body).then(toDoCallback).catch(errCallback);
+  axios.post(`${URL}/api/task`, body).then(toDoCallback).catch(errCallback);
 const deleteToDoList = (id) =>
   axios.delete(`${URL}/task/${id}`).then(toDoCallback).catch(errCallback);
 const updateToDoList = (id, type) =>
@@ -53,7 +53,7 @@ const removeTask = (element) => {
   });
 };
 
-//creating the todoList function
+//MAIN FUNCTION TO DISPLAY TASK LIST FROM DATABASE
 const displayTasks = (tasks) => {
   const item = document.createElement("li");
   tasks.map((task) => {
@@ -63,20 +63,34 @@ const displayTasks = (tasks) => {
   list.append(item);
 };
 
+//AXIOS CALL TO GET DATA FROM DATABASE
 const getToDoList = () => {
-  axios.get(`${URL}/api/tasks`).then(toDoCallback).catch(errCallback);
+  axios.get(`${URL}/api/task`).then(toDoCallback).catch(errCallback);
 };
 
-const onAddTaskButtonClick = () => {
-  addbtn.addEventListener("click", () => {
-    // e.preventDefault();
-    console.log("I got clicked");
-    displayTasks();
-  });
+//
+// const onAddTaskButtonClick = () => {
+//   addbtn.addEventListener("click", () => {
+//     // e.preventDefault();
+//     taskSubmitHandler();
+//   });
+// };
+
+
+//AXIOS POST CODE
+const taskSubmitHandler = (e) => {
+    e.preventDefault(e);
+    
+    let taskItem = {
+        task: input.value,
+    };
+    console.log(taskItem)
+      createToDo(taskItem);
+    
+    input.value = "";
 };
 
-formToDo.addEventListener("submit", onAddTaskButtonClick);
-
+formToDo.addEventListener("submit", taskSubmitHandler);
 //function to move list to weekday div
 
 weeklyForm.onsubmit = function (e) {
@@ -115,7 +129,7 @@ const createEntry = (body) =>
 const deleteEntry = (id) =>
   axios.delete(`${URL}/${id}`).then(entriesCallback).catch(errCallback);
 
-function submitHandler(e) {
+function entrySubmitHandler(e) {
   e.preventDefault();
 
   let content = document.querySelector(".textarea");

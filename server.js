@@ -8,9 +8,9 @@ app.use(express.static("client"));
 
 const { getTasks, createTask, getAllEntries, createEntry, updateEntry, deleteEntry } = require(`./server/controller/controller.js`);
 
-app.get(`/api/tasks`, getTasks);
+app.get(`/api/task`, getTasks);
 
-app.post(`/api/toDos`, createTask);
+app.post(`/api/task`, createTask);
 
 //app.put(/api/tasks/:id, updateTask);
 

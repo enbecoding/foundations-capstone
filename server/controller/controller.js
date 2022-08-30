@@ -1,17 +1,14 @@
 const TASKS = require("../config/daily_tasks.json");
-
+let globalId = 
 module.exports = {
   getTasks: (request, response) => {
     response.status(200).send(TASKS.tasks);
   },
   createTask: (request, response) => {
-    let { description } = request.body
-    let newTask = {
-        id: globalId,
-        time,
-        description
-    }
-    TASKS.tasks.push(newTask)
+    console.log(request)
+    let { task } = request.body
+    TASKS.tasks.push(task)
+    console.log(TASKS)
     response.status(200).send(TASKS.tasks)
     globalId++
   },
