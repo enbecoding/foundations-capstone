@@ -1,6 +1,6 @@
 //select all the elements for ToDo list
 const formToDo = document.querySelector("#new-item-form");
-const list = document.querySelector("#list");
+let list = document.querySelector("#list");
 const input = document.querySelector("#item-input");
 const toDoContainer = document.querySelector(".to-do-container");
 const addbtn = document.querySelector(".submit-task");
@@ -103,6 +103,8 @@ weeklyForm.onsubmit = function (e) {
   } else if (optionValue === "Sunday") {
     sundayItems.append(list);
   }
+  list = document.createElement("ul");
+  formToDo.append(list);
 };
 
 getToDoList();
@@ -118,7 +120,7 @@ const getAllEntries = () => axios.get(`${URL}/api/entries`).then(entriesCallback
 const createEntry = (body) =>
   axios.post(`${URL}/api/entries`, body).then(entriesCallback).catch(errCallback);
 const deleteEntry = (id) =>
-  axios.delete(`${URL}/api/entries/${id}`).then(entriesCallback).catch(errCallback);
+  axios.delete(`${URL}/api/entry/${id}`).then(entriesCallback).catch(errCallback);
 
 function entrySubmitHandler(e) {
   e.preventDefault();

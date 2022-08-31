@@ -11,7 +11,6 @@ module.exports = {
     let { task } = request.body
     TASKS.tasks.push(task)
     console.log(TASKS)
-    baseId++
     response.status(200).send(TASKS.tasks)
   },
 //   updateTask: (req, res) => {
@@ -39,13 +38,12 @@ module.exports = {
         res.status(200).send(ENTRYDB)
         globalID++
     },
-    // updateEntry: (req, res) => {
-    //     let {id} = req.params;
-    //     let {content} = req.body;
-    //     let index = ENTRYDB.findIndex(element => +element.id === +id)
-
-    //     if (ENTRYDB[index])
-    // },
+    updateEntry: (req, res) => {
+        let {id} = req.params;
+        let {content} = req.body;
+        let index = ENTRYDB.findIndex(element => +element.id === +id)
+        ENTRYDB[index].content = "asd";
+    },
     deleteEntry: (req, res) => {
         let index = ENTRYDB.findIndex(element => element.id === +req.params.id)
         ENTRYDB.splice(index, 1)

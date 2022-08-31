@@ -20,7 +20,7 @@ app.get(`/api/entries`, getAllEntries);
 
 app.post(`/api/entries`, createEntry);
 
-// app.put(`/api/entries/:id`, updateEntry);
+app.put(`/api/entries/:id`, updateEntry);
 
 app.delete(`/api/entry/:id`, deleteEntry);
 
