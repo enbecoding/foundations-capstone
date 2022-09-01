@@ -10,6 +10,10 @@ h1 {
     font-family: "Quicksand", sans-serif;
 }
 
+body {
+    overflow-x: hidden;
+}
+
 html {
     font-size: 72.5%;
     background-size: cover;
@@ -36,7 +40,7 @@ html {
 
 .to-do-container {
     width: 50%;
-    height: 50%;
+    height: 65%;
     border: 1px solid #bacdd8;
     border-radius: 12px;
     padding: 20px;
@@ -49,6 +53,7 @@ html {
 
 .weekly-view-container {
     width: 50%;
+    height: 65%;
     box-shadow: 0 0.5rem 3 rem rgba(0, 0, 0, 0.4);
     border: 1px solid #bacdd8;
     border-radius: 12px;
@@ -152,6 +157,14 @@ textarea::-webkit-scrollbar-thumb {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     background-color: #eaeff1;
+    padding: 20px;
 }
 
+.delete-btn {
+    padding: 12px;
+    margin-bottom: auto;
+}
 
+.navbar {
+    position: fixed;
+}

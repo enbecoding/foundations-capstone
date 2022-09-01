@@ -26,22 +26,21 @@
   <body>
     <a name="top"></a>
     <div class="header-container">
-    <header>
-      <div class="header">
-        <h1>My Day Today</h1>
-      </div>
-      <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active" href="#top">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Week to Week</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#entries">Journal Entries</a>
-        </li>
-      </ul>
-    </header>
+      <header>
+        <div class="header">
+          <h1>My Day Today</h1>
+        </div>
+        <nav class="navbar">
+          <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" href="#top">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#entries">Journal Entries</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
     </div>
     <div class="main-container">
       <div class="to-do-container">
@@ -49,9 +48,7 @@
         <form id="new-item-form">
           <input id="item-input" placeholder="Input some Tasks!" type="text" />
           <button class="submit-task" type="create-task">Add To List!</button>
-          <ul id="list">
-
-          </ul>
+          <ul id="list"></ul>
         </form>
 
         <form name="list-submission">
@@ -93,9 +90,7 @@
               aria-labelledby="flush-headingOne"
               data-bs-parent="#accordionFlushExample"
             >
-              <div class="accordion-body-mon">
-            
-              </div>
+              <div class="accordion-body-mon"></div>
             </div>
           </div>
           <div class="accordion-item">
@@ -236,13 +231,22 @@
 
     <div class="journal-container">
       <h1>Journal Entries</h1>
-     <form class="journal-posts">
-      <label class="textLabel">Description:</label><br>
-      <div class="textarea_style">
-        <textarea class="textarea" id="textarea" name="textarea_description" cols="37" rows="4" maxlength="400" placeholder="What's on your mind?"></textarea>
-      </div><br>
-      <button class="entry-post">POST</button>
-     </form>
+      <form class="journal-posts">
+        <label class="textLabel">Description:</label><br />
+        <div class="textarea_style">
+          <textarea
+            class="textarea"
+            id="textarea"
+            name="textarea_description"
+            cols="37"
+            rows="4"
+            maxlength="400"
+            placeholder="What's on your mind?"
+          ></textarea>
+        </div>
+        <br />
+        <button class="entry-post">POST</button>
+      </form>
     </div>
 
     <section id="entries-container"></section>

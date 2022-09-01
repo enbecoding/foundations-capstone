@@ -28,8 +28,6 @@ const errCallback = (err) => console.log(err);
 
 const createToDo = (body) =>
   axios.post(`${URL}/api/task`, body).then(toDoCallback).catch(errCallback);
-const deleteToDoList = (id) =>
-  axios.delete(`${URL}/task/${id}`).then(toDoCallback).catch(errCallback);
 const updateToDoList = (id, type) =>
   axios
     .put(`${URL}/task/${id}`, { type })
